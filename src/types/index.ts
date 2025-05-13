@@ -1,0 +1,28 @@
+export type EventStatus = 'upcoming' | 'live' | 'completed';
+
+export interface SportEvent {
+  id: string;
+  name: string;
+  teamA: string;
+  teamB: string;
+  startTime: Date;
+  status: EventStatus;
+  odds: {
+    teamA: number;
+    teamB: number;
+  };
+  tokenAddresses: {
+    teamA: string;
+    teamB: string;
+  };
+}
+
+export interface Bet {
+  id: string;
+  eventId: string;
+  amount: number;
+  selectedTeam: 'teamA' | 'teamB';
+  odds: number;
+  timestamp: Date;
+  status: 'pending' | 'won' | 'lost';
+}
