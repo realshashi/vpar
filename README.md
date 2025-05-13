@@ -2,6 +2,56 @@
 
 A modern web application built with React, TypeScript, and Vite, featuring Solana blockchain integration.
 
+                        ┌──────────────────────┐
+                        │    Admin Dashboard    │
+                        │ (Next.js + Wallet)    │
+                        └─────────┬────────────┘
+                                  │
+               Create/Edit Events│Mint Outcome Tokens
+                                  ▼
+                        ┌──────────────────────┐
+                        │  Event Anchor Program │◄────────┐
+                        │   (Solana Smart Contract)      │
+                        └─────────┬────────────┘         │
+                                  │                      │
+       ┌──────────────────────────┼──────────────────┐   │
+       ▼                          ▼                  ▼   │
+┌─────────────┐       ┌─────────────────────┐   ┌──────────────┐
+│SPL Token A  │       │ SPL Token B (outcome│   │  Event PDAs  │
+│(e.g. Team A)│       │  e.g. Team B wins)  │   │  (Metadata)  │
+└─────────────┘       └─────────────────────┘   └──────────────┘
+       ▲                                              ▲
+       │ Place Bets                                   │ Resolve
+       │                                              │ Results
+       │        ┌────────────────────┐                │
+       └────────┤ Frontend Client    ├────────────────┘
+                │  (Web + Wallet)    │
+                └─────────┬──────────┘
+                          │
+                          ▼
+               ┌─────────────────────────┐
+               │  WebSocket + Redis Pub  │◄─────┐
+               └────────┬────────────────┘      │
+                        │                       │
+                        ▼                       │
+           ┌──────────────────────┐       ┌────────────┐
+           │ Orderbook Engine     │──────►│ Match Feed │
+           │ (Rust, Off-Chain)    │◄──────│ (API/Oracle)│
+           └────────┬─────────────┘       └────────────┘
+                    │
+                    ▼
+         ┌─────────────────────────┐
+         │ Liquidator / Settlement │
+         │ (Rust or Anchor)        │
+         └─────────┬───────────────┘
+                   ▼
+         ┌─────────────────────────┐
+         │   Payouts on Solana     │
+         │ (Burn losing tokens,    │
+         │  Transfer to winners)   │
+         └─────────────────────────┘
+
+
 ## Tech Stack
 
 - React 18
