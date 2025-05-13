@@ -95,10 +95,3 @@ vpar/
 - Containerized deployment with Docker
 - Production-ready Nginx configuration
 
-## License
-
-[Add your license here]
-
-## Contributing
-
-[Add contribution guidelines here]
