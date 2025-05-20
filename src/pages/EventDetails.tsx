@@ -4,6 +4,8 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { useStore } from "../store/useStore";
 import { Calendar, Clock, AlertCircle, Wallet } from "lucide-react";
 
+const ADMIN_PUBLIC_KEY = import.meta.env.VITE_ADMIN_PUBLIC_KEY;
+
 const EventDetails = () => {
   const { id } = useParams();
   const { publicKey } = useWallet();
@@ -136,6 +138,22 @@ const EventDetails = () => {
           </div>
         )}
       </div>
+
+      {/* Close Orderbook Button (Admin Only) */}
+      {/* TODO: Replace with real admin check */}
+      {publicKey && publicKey.toString() === ADMIN_PUBLIC_KEY && (
+        <div className="flex justify-end mb-4">
+          <button
+            className="bg-red-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-red-700 transition-colors"
+            onClick={() => {
+              // TODO: Implement backend call to close orderbook
+              alert("Orderbook closed!");
+            }}
+          >
+            Close Orderbook
+          </button>
+        </div>
+      )}
 
       {/* Orderbook Section */}
       <div className="bg-white rounded-lg shadow-md p-8 mt-8">

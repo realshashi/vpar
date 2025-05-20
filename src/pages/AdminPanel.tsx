@@ -16,6 +16,7 @@ interface FormData {
   teamA: string;
   teamB: string;
   startTime: string;
+  endTime: string;
   oddsA: string;
   oddsB: string;
   description: string;
@@ -30,6 +31,7 @@ const AdminPanel = () => {
     teamA: "",
     teamB: "",
     startTime: "",
+    endTime: "",
     oddsA: "",
     oddsB: "",
     description: "",
@@ -79,6 +81,7 @@ const AdminPanel = () => {
         teamA: formData.teamA,
         teamB: formData.teamB,
         startTime: new Date(formData.startTime),
+        endTime: formData.endTime ? new Date(formData.endTime) : undefined,
         status: "upcoming" as EventStatus,
         odds: {
           teamA: parseFloat(formData.oddsA),
@@ -98,6 +101,7 @@ const AdminPanel = () => {
         teamA: "",
         teamB: "",
         startTime: "",
+        endTime: "",
         oddsA: "",
         oddsB: "",
         description: "",
@@ -286,6 +290,25 @@ const AdminPanel = () => {
                   value={formData.startTime}
                   onChange={(e) =>
                     setFormData({ ...formData, startTime: e.target.value })
+                  }
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="endTime"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  End Time
+                </label>
+                <input
+                  type="datetime-local"
+                  id="endTime"
+                  value={formData.endTime}
+                  onChange={(e) =>
+                    setFormData({ ...formData, endTime: e.target.value })
                   }
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                   required
