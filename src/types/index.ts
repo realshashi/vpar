@@ -6,6 +6,7 @@ export interface SportEvent {
   teamA: string;
   teamB: string;
   startTime: Date;
+  endTime?: Date;
   status: EventStatus;
   odds: {
     teamA: number;

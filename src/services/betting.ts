@@ -25,8 +25,6 @@ export class BettingService {
     teamA: string,
     teamB: string,
     startTime: Date,
-    oddsA: number,
-    oddsB: number,
     description: string,
     category: string
   ): Promise<string> {
@@ -37,8 +35,6 @@ export class BettingService {
           teamA,
           teamB,
           Math.floor(startTime.getTime() / 1000),
-          new BN(oddsA * 1e9),
-          new BN(oddsB * 1e9),
           description,
           category
         )

@@ -17,8 +17,6 @@ interface FormData {
   teamB: string;
   startTime: string;
   endTime: string;
-  oddsA: string;
-  oddsB: string;
   description: string;
   category: "sports" | "esports" | "other";
 }
@@ -32,8 +30,6 @@ const AdminPanel = () => {
     teamB: "",
     startTime: "",
     endTime: "",
-    oddsA: "",
-    oddsB: "",
     description: "",
     category: "sports" as const,
   });
@@ -55,8 +51,6 @@ const AdminPanel = () => {
         formData.teamA,
         formData.teamB,
         new Date(formData.startTime),
-        parseFloat(formData.oddsA),
-        parseFloat(formData.oddsB),
         formData.description,
         formData.category
       );
@@ -84,8 +78,8 @@ const AdminPanel = () => {
         endTime: formData.endTime ? new Date(formData.endTime) : undefined,
         status: "upcoming" as EventStatus,
         odds: {
-          teamA: parseFloat(formData.oddsA),
-          teamB: parseFloat(formData.oddsB),
+          teamA: 1.5,
+          teamB: 1.5,
         },
         tokenAddresses: {
           teamA: teamAToken,
@@ -102,8 +96,6 @@ const AdminPanel = () => {
         teamB: "",
         startTime: "",
         endTime: "",
-        oddsA: "",
-        oddsB: "",
         description: "",
         category: "sports" as const,
       });
@@ -122,8 +114,6 @@ const AdminPanel = () => {
         name: updates.name,
         description: updates.description,
         startTime: updates.startTime,
-        oddsA: updates.odds?.teamA,
-        oddsB: updates.odds?.teamB,
         status: updates.status,
       });
 
@@ -313,50 +303,6 @@ const AdminPanel = () => {
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                   required
                 />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="oddsA"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Odds Team A
-                  </label>
-                  <input
-                    type="number"
-                    id="oddsA"
-                    value={formData.oddsA}
-                    onChange={(e) =>
-                      setFormData({ ...formData, oddsA: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                    step="0.01"
-                    min="1"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="oddsB"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Odds Team B
-                  </label>
-                  <input
-                    type="number"
-                    id="oddsB"
-                    value={formData.oddsB}
-                    onChange={(e) =>
-                      setFormData({ ...formData, oddsB: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                    step="0.01"
-                    min="1"
-                    required
-                  />
-                </div>
               </div>
 
               <div className="col-span-2">
