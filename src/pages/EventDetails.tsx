@@ -136,6 +136,12 @@ const EventDetails = () => {
           </div>
         )}
       </div>
+
+      {/* Orderbook Section */}
+      <div className="bg-white rounded-lg shadow-md p-8 mt-8">
+        <h2 className="text-2xl font-bold mb-4">Orderbook</h2>
+        <p className="text-gray-500">Orderbook data will appear here.</p>
+      </div>
     </div>
   );
 };

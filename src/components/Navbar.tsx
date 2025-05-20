@@ -19,6 +19,9 @@ const Navbar = () => {
             >
               Dashboard
             </Link>
+            <Link to="/admin" className="text-gray-700 hover:text-indigo-600">
+              Admin
+            </Link>
             <WalletMultiButton className="!bg-indigo-600" />
           </div>
         </div>
