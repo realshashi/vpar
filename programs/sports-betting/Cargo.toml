@@ -12,6 +12,6 @@ no-entrypoint = []
 cpi = ["no-entrypoint"]
 
 [dependencies]
-anchor-lang = "0.28.0"
-anchor-spl = "0.28.0"
-solana-program = "1.16"
+anchor-lang = "0.31.1"
+anchor-spl = "0.31.1"
+solana-program = "=2.1.0"

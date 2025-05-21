@@ -1,6 +1,9 @@
 [features]
 seeds = false
 
+[toolchain]
+anchor_version = "0.31.1"
+
 [programs.localnet]
 sports_betting = "Bet1111111111111111111111111111111111111111"
 
